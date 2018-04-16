@@ -21,7 +21,6 @@ public class GUIDemo extends JFrame
      */
     public GUIDemo()
     {
-	// CONSTRUCTOR NEEDS TO BE FINISHED!
         setTitle("Bigger/Smaller");
         setSize(200, 100);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
