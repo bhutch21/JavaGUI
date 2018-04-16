@@ -15,24 +15,47 @@ public class GUIDemo extends JFrame
     private JPanel panel;
     private JButton biggerButton;
     private JButton smallerButton;
+    private JButton titleButton;
+    private int title;
 
     /**
      * Set up the application.
      */
     public GUIDemo()
     {
+        this.title = 0;
         setTitle("Bigger/Smaller");
         setSize(200, 100);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         panel = new JPanel();
         biggerButton = new JButton("BIGGER");
         smallerButton = new JButton("SMALLER");
+        titleButton = new JButton("TITLE CHANGE");
         biggerButton.addActionListener(new ButtonHandler());
         smallerButton.addActionListener(new ButtonHandler());
+        titleButton.addActionListener(new ButtonHandler());
         add(panel);
         panel.add(biggerButton);
         panel.add(smallerButton);
+        panel.add(titleButton);
         setVisible(true);
+    }
+
+    /**
+     * Returns the integer title.
+     * @return int value
+     */
+    public int getIntTitle()
+    {
+        return this.title;
+    }
+
+    /**
+     * Increments the title value.
+     */
+    public void setIntTitle()
+    {
+        this.title++;
     }
 
     /**
@@ -53,11 +76,15 @@ public class GUIDemo extends JFrame
             {
                 setSize(size.width + 10, size.height + 10);
             }
-            else
+            else if (e.getSource().equals(smallerButton))
             {
                 setSize(size.width - 10, size.height - 10);
             }
-
+            else if (e.getSource().equals(titleButton))
+            {
+                setIntTitle();
+                setTitle(Integer.toString(getIntTitle()));
+            }
         }
     }
 
